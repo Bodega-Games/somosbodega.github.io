@@ -1,0 +1,33 @@
+---
+// O monograma da Bodega, direto do kit oficial (src/assets/marca_monograma.svg).
+// Props:
+//   classe  — classe CSS aplicada ao <svg> (ex.: "marca", "pe-marca")
+//   luz     — se true, o rect ouro ganha id="luz" e pulsa (ver global.css)
+//   sufixo  — sufixo para os ids internos (evita ids duplicados na página)
+//   rotulo  — aria-label; sem ele, a marca é decorativa (aria-hidden)
+import bruto from '../assets/marca_monograma.svg?raw';
+
+interface Props {
+  classe?: string;
+  luz?: boolean;
+  sufixo?: string;
+  rotulo?: string;
+}
+const { classe = 'marca', luz = false, sufixo = '', rotulo } = Astro.props;
+
+let svg = bruto.replace(/\s+width="[\d.]+"\s+height="[\d.]+"/, '');
+svg = svg.replace(
+  '<svg ',
+  `<svg class="${classe}" ${rotulo ? `role="img" aria-label="${rotulo}"` : 'aria-hidden="true"'} `,
+);
+if (sufixo) {
+  svg = svg
+    .replaceAll('id="porta"', `id="porta${sufixo}"`)
+    .replaceAll('url(#porta)', `url(#porta${sufixo})`);
+}
+if (luz) {
+  svg = svg.replace('fill="#E8B84B"', 'id="luz" fill="#E8B84B"');
+}
+---
+
+<Fragment set:html={svg} />

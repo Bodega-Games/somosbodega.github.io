@@ -1,0 +1,37 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Rodape from '../../components/Rodape.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const fmt = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'long' });
+---
+
+<Base titulo={`${post.data.titulo} — A Caderneta`} descricao={post.data.descricao}>
+  <header class="post-topo">
+    <div class="miolo">
+      <a class="voltar" href={`${import.meta.env.BASE_URL}blog/`}>← a caderneta</a>
+      <h1>{post.data.titulo}</h1>
+      <time class="post-data" datetime={post.data.data.toISOString()}>
+        {fmt.format(post.data.data)}
+      </time>
+    </div>
+  </header>
+  <section class="papel">
+    <div class="miolo">
+      <article class="prosa">
+        <Content />
+      </article>
+    </div>
+  </section>
+  <Rodape />
+</Base>

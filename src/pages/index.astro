@@ -1,0 +1,103 @@
+---
+import Base from '../layouts/Base.astro';
+import Marca from '../components/Marca.astro';
+import Rodape from '../components/Rodape.astro';
+---
+
+<Base>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="miolo hero-grade">
+      <Marca
+        classe="marca"
+        luz
+        rotulo="Monograma da Bodega: um B com a janela acesa e a porta aberta"
+      />
+      <div>
+        <p class="rotulo">Somos</p>
+        <h1>Bodega</h1>
+        <p class="lema">Estúdio de jogos do Agreste de Pernambuco</p>
+        <p class="sub">
+          Jogos feitos em desenvolvimento aberto — a porta fica aberta e a luz,
+          acesa. Quem chega acompanha cada passo.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- MANIFESTO -->
+  <section class="manifesto" aria-labelledby="t-bodega">
+    <div class="miolo">
+      <p class="rotulo">A bodega</p>
+      <h2 id="t-bodega">Onde o interior se encontra.</h2>
+      <p>
+        No agreste, a bodega nunca foi só comércio. É balcão de prosa, ponto de
+        encontro — o lugar onde a comunidade se junta pra comprar, pra conversar
+        e, muitas vezes, pra jogar.
+      </p>
+      <p>
+        A Bodega nasce dessa figura: uma casa pequena, de porta aberta, onde se
+        faz jogo com o cuidado de quem <strong>atende o freguês pelo nome</strong>.
+      </p>
+    </div>
+  </section>
+
+  <!-- PRATELEIRA -->
+  <main class="prateleira" aria-labelledby="t-prateleira">
+    <div class="miolo">
+      <p class="rotulo">Na prateleira</p>
+      <h2 id="t-prateleira">Os jogos da casa.</h2>
+      <div class="estante">
+        <article class="produto">
+          <span class="selo">Em campo</span>
+          <h3>OnzeFoot</h3>
+          <p>
+            Gestão de futebol do jeito brasileiro. Monte o elenco, encare a
+            tabela e leve seu time do interior ao topo.
+          </p>
+          <a href="https://www.instagram.com/onzefoot.game" rel="noopener">
+            Acompanhar no Instagram →</a
+          >
+          <span class="meta">v0.4.0 · em desenvolvimento aberto · beta pelo Instagram</span>
+        </article>
+        <article class="produto">
+          <span class="selo">Modo online do OnzeFoot</span>
+          <h3>Onze Elite</h3>
+          <p>
+            Colecione os craques, monte seu onze dos sonhos e desafie o Brasil —
+            colecionáveis e temporadas online, dentro do OnzeFoot.
+          </p>
+          <span class="meta">aquecendo · em pré-produção</span>
+        </article>
+        <article class="produto vago" aria-label="Espaço reservado para o próximo jogo">
+          <span class="selo">Em breve</span>
+          <p>Espaço na prateleira.<br />O próximo jogo nasce aqui.</p>
+        </article>
+      </div>
+      <p class="legenda-estante">Todo jogo da casa assina: <em>um jogo Bodega</em>.</p>
+    </div>
+  </main>
+
+  <!-- DESENVOLVIMENTO ABERTO -->
+  <section class="aberto" aria-labelledby="t-aberto">
+    <div class="miolo">
+      <p class="rotulo">Desenvolvimento aberto</p>
+      <h2 id="t-aberto">Acompanhe cada passo.</h2>
+      <p>
+        Aqui o jogo é feito com a porta aberta: decisão, erro e acerto ficam à
+        vista. Quem acompanha vê o jogo nascer — e ajuda a moldar o que ele vira.
+      </p>
+      <div class="botoes">
+        <a class="botao cheio" href="https://www.instagram.com/onzefoot.game" rel="noopener"
+          >@onzefoot.game</a
+        >
+        <a class="botao vazado" href="https://www.instagram.com/somos.bodega" rel="noopener"
+          >@somos.bodega</a
+        >
+        <a class="botao vazado" href={`${import.meta.env.BASE_URL}blog/`}>A Caderneta →</a>
+      </div>
+    </div>
+  </section>
+
+  <Rodape />
+</Base>
