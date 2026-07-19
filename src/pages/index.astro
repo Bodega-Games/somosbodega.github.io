@@ -7,7 +7,7 @@ import Rodape from '../components/Rodape.astro';
 <Base>
   <!-- HERO -->
   <header class="hero">
-    <div class="miolo hero-grade">
+    <div class="miolo hero-grade revelar">
       <Marca
         classe="marca"
         luz
@@ -18,7 +18,7 @@ import Rodape from '../components/Rodape.astro';
         <h1>Bodega</h1>
         <p class="lema">Estúdio de jogos do Agreste de Pernambuco</p>
         <p class="sub">
-          Jogos feitos em desenvolvimento aberto — a porta fica aberta e a luz,
+          Jogos feitos em desenvolvimento contínuo — a porta fica aberta e a luz,
           acesa. Quem chega acompanha cada passo.
         </p>
       </div>
@@ -27,7 +27,7 @@ import Rodape from '../components/Rodape.astro';
 
   <!-- MANIFESTO -->
   <section class="manifesto" aria-labelledby="t-bodega">
-    <div class="miolo">
+    <div class="miolo revelar">
       <p class="rotulo">A bodega</p>
       <h2 id="t-bodega">Onde o interior se encontra.</h2>
       <p>
@@ -44,7 +44,7 @@ import Rodape from '../components/Rodape.astro';
 
   <!-- PRATELEIRA -->
   <main class="prateleira" aria-labelledby="t-prateleira">
-    <div class="miolo">
+    <div class="miolo revelar">
       <p class="rotulo">Na prateleira</p>
       <h2 id="t-prateleira">Os jogos da casa.</h2>
       <div class="estante">
@@ -58,7 +58,7 @@ import Rodape from '../components/Rodape.astro';
           <a href="https://www.instagram.com/onzefoot.game" rel="noopener">
             Acompanhar no Instagram →</a
           >
-          <span class="meta">v0.4.0 · em desenvolvimento aberto · beta pelo Instagram</span>
+          <span class="meta">em desenvolvimento contínuo · beta pelo Instagram</span>
         </article>
         <article class="produto">
           <span class="selo">Modo online do OnzeFoot</span>
@@ -78,10 +78,10 @@ import Rodape from '../components/Rodape.astro';
     </div>
   </main>
 
-  <!-- DESENVOLVIMENTO ABERTO -->
+  <!-- DESENVOLVIMENTO CONTÍNUO -->
   <section class="aberto" aria-labelledby="t-aberto">
-    <div class="miolo">
-      <p class="rotulo">Desenvolvimento aberto</p>
+    <div class="miolo revelar">
+      <p class="rotulo">Desenvolvimento contínuo</p>
       <h2 id="t-aberto">Acompanhe cada passo.</h2>
       <p>
         Aqui o jogo é feito com a porta aberta: decisão, erro e acerto ficam à
@@ -90,9 +90,6 @@ import Rodape from '../components/Rodape.astro';
       <div class="botoes">
         <a class="botao cheio" href="https://www.instagram.com/onzefoot.game" rel="noopener"
           >@onzefoot.game</a
-        >
-        <a class="botao vazado" href="https://www.instagram.com/somos.bodega" rel="noopener"
-          >@somos.bodega</a
         >
         <a class="botao vazado" href={`${import.meta.env.BASE_URL}blog/`}>A Caderneta →</a>
       </div>

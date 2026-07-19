@@ -3,15 +3,15 @@ import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Rodape from '../../components/Rodape.astro';
 
-const posts = (await getCollection('blog')).sort(
-  (a, b) => b.data.data.valueOf() - a.data.data.valueOf(),
-);
-const fmt = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'long' });
+const posts = (await getCollection('blog'))
+  .filter((p) => !p.id.startsWith('_'))
+  .sort((a, b) => b.data.data.valueOf() - a.data.data.valueOf());
+const fmt = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'long', timeZone: 'UTC' });
 ---
 
 <Base
   titulo="A Caderneta — Bodega Games"
-  descricao="O caderno da Bodega: decisões de projeto, bastidores e aprendizados do estúdio, anotados em desenvolvimento aberto."
+  descricao="O caderno da Bodega: decisões de projeto, bastidores e aprendizados do estúdio, anotados em desenvolvimento contínuo."
 >
   <main class="caderneta">
     <div class="miolo">
@@ -20,7 +20,7 @@ const fmt = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'long' });
       <h1>A Caderneta</h1>
       <p class="sub">
         Onde a bodega anota tudo: decisões, bastidores e aprendizados — em
-        desenvolvimento aberto.
+        desenvolvimento contínuo.
       </p>
       {
         posts.map((post) => (

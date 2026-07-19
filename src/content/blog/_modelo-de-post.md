@@ -22,7 +22,7 @@ texto gruda num parágrafo só.
 
 Use `##` pra abrir uma nova seção (fica grande, em Barlow Condensed). Dentro
 do texto dá pra usar **negrito com dois asteriscos**, *itálico com um*, e
-[links assim](https://www.instagram.com/somos.bodega) — colchetes no texto,
+[links assim](https://www.instagram.com/onzefoot.game) — colchetes no texto,
 parênteses no endereço.
 
 ### Um subtítulo menor, se precisar
@@ -45,12 +45,12 @@ Listas numeradas, quando a ordem importa:
 > a barra dourada da casa na lateral.
 
 Código no meio da frase vai entre crases: `Jogo.simular_rodada()`. Bloco de
-código usa três crases e o nome da linguagem:
+código usa três crases (evite revelar a engine — use pseudocódigo):
 
-```gdscript
+```
 # Um trecho do OnzeFoot, por exemplo:
-func luz_acesa() -> bool:
-    return true  # sempre
+simular_rodada(partida)   # roda a próxima rodada
+luz_acesa = verdadeiro    # sempre
 ```
 
 Pra colocar **imagem**: salve o arquivo em `public/imagens/` no projeto e

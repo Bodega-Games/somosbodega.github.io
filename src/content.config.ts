@@ -5,7 +5,7 @@ import { glob } from 'astro/loaders';
 // Arquivos começando com "_" (modelo, rascunhos) NUNCA são publicados.
 // Frontmatter obrigatório: titulo, descricao, data. Opcional: tags.
 const blog = defineCollection({
-  loader: glob({ pattern: ['**/*.md', '!**/_*'], base: './src/content/blog' }),
+  loader: glob({ pattern: '**/[!_]*.md', base: './src/content/blog' }),
   schema: z.object({
     titulo: z.string(),
     descricao: z.string(),

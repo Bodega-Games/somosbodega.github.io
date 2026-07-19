@@ -1,0 +1,17 @@
+---
+// Menu fixo do topo. Aparece em toda página (via Base).
+// Os âncoras apontam sempre para a home + #secao, pra funcionar também na Caderneta.
+const base = import.meta.env.BASE_URL;
+---
+
+<nav class="topo" aria-label="Navegação principal">
+  <div class="miolo topo-grade">
+    <a class="topo-marca" href={base}>Bodega</a>
+    <div class="topo-links">
+      <a href={`${base}#t-bodega`}>A Bodega</a>
+      <a href={`${base}#t-prateleira`}>Prateleira</a>
+      <a href={`${base}#t-aberto`}>Acompanhe</a>
+      <a href={`${base}blog/`}>Caderneta</a>
+    </div>
+  </div>
+</nav>

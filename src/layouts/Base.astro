@@ -1,6 +1,7 @@
 ---
 // Camada base de toda página: <head> com metas da marca e o fundo blindado.
 import '../styles/global.css';
+import Topo from '../components/Topo.astro';
 
 interface Props {
   titulo?: string;
@@ -9,7 +10,7 @@ interface Props {
 const {
   titulo = 'Bodega Games — somos bodega',
   descricao = 'Bodega Games — estúdio independente do Agreste de Pernambuco. ' +
-    'Jogos feitos em desenvolvimento aberto. Na prateleira: OnzeFoot e o modo Onze Elite.',
+    'Jogos feitos em desenvolvimento contínuo. Na prateleira: OnzeFoot e o modo Onze Elite.',
 } = Astro.props;
 ---
 
@@ -34,6 +35,55 @@ const {
     />
   </head>
   <body style="background:#14211D">
+    <Topo />
     <slot />
+    <script>
+      // Revela cada seção com animação quando ela entra na tela.
+      const alvos = document.querySelectorAll('.revelar');
+      const mostra = (el: Element) => el.classList.add('visivel');
+      const semMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!('IntersectionObserver' in window) || semMovimento) {
+        alvos.forEach(mostra);
+      } else {
+        const obs = new IntersectionObserver(
+          (entradas) => {
+            entradas.forEach((e) => {
+              if (e.isIntersecting) {
+                mostra(e.target);
+                obs.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.18 }
+        );
+        alvos.forEach((el) => obs.observe(el));
+      }
+
+      // Destaca no menu a seção que está na tela.
+      const links = document.querySelectorAll<HTMLAnchorElement>('.topo-links a[href*="#"]');
+      const mapa = new Map<Element, HTMLAnchorElement>();
+      links.forEach((a) => {
+        const id = a.hash.slice(1);
+        const alvo = id && document.getElementById(id);
+        if (alvo) {
+          const secao = alvo.closest('section, main, header') || alvo;
+          mapa.set(secao, a);
+        }
+      });
+      if (mapa.size) {
+        const espia = new IntersectionObserver(
+          (entradas) => {
+            entradas.forEach((e) => {
+              if (e.isIntersecting) {
+                links.forEach((l) => l.classList.remove('ativo'));
+                mapa.get(e.target)?.classList.add('ativo');
+              }
+            });
+          },
+          { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+        );
+        mapa.forEach((_a, secao) => espia.observe(secao));
+      }
+    </script>
   </body>
 </html>
