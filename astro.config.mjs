@@ -1,12 +1,9 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-// Publicado como página de projeto na organização Bodega-Games:
-// repositório  somosbodega.github.io  →  servido em
-// https://bodega-games.github.io/somosbodega.github.io/
-// (os links internos usam import.meta.env.BASE_URL, então, se um dia
-//  apontar um domínio próprio na raiz, basta trocar site e remover base.)
+// Domínio próprio na raiz: bodegagames.com.br (registrado no registro.br).
+// O CNAME em public/CNAME é copiado para o build e mantém o domínio no Pages.
+// Os links internos usam import.meta.env.BASE_URL, que agora resolve para '/'.
 export default defineConfig({
-  site: 'https://bodega-games.github.io',
-  base: '/somosbodega.github.io/',
+  site: 'https://bodegagames.com.br',
 });

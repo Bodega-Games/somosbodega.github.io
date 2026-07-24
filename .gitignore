@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# nota de trabalho local (checklist do domínio) — não versionar
+RETOMAR-DOMINIO.md
